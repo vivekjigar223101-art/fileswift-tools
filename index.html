@@ -1,0 +1,1262 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FileSwift Tools - Free PDF & Image Tools Online</title>
+
+    <meta name="description" content="Free online PDF and image tools. Convert, merge, split, compress and manage your files quickly and easily. Mobile friendly and privacy focused.">
+
+    <meta name="keywords" content="PDF tools, JPG to PDF, PDF to JPG, merge PDF, split PDF, compress PDF, image compressor, image tools">
+
+    <meta name="robots" content="index, follow">
+
+    <meta name="author" content="FileSwift Tools">
+
+    <meta name="theme-color" content="#2563eb">
+
+    <link rel="canonical" href="https://YOUR-USERNAME.github.io/fileswift-tools/">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8fafc;
+            color: #172033;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        /* HEADER */
+
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            min-height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: #2563eb;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #111827;
+        }
+
+        nav {
+            display: flex;
+            gap: 22px;
+            align-items: center;
+        }
+
+        nav a {
+            font-size: 15px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        nav a:hover {
+            color: #2563eb;
+        }
+
+        /* HERO */
+
+        .hero {
+            padding: 70px 0 55px;
+            text-align: center;
+            background: linear-gradient(180deg, #eff6ff 0%, #f8fafc 100%);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 7px 14px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 6vw, 58px);
+            line-height: 1.1;
+            max-width: 850px;
+            margin: auto;
+            color: #111827;
+        }
+
+        .hero h1 span {
+            color: #2563eb;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 20px auto 28px;
+            color: #64748b;
+            font-size: 17px;
+        }
+
+        /* SEARCH */
+
+        .search-box {
+            max-width: 650px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 17px 20px;
+            border: 1px solid #d1d5db;
+            border-radius: 14px;
+            font-size: 16px;
+            outline: none;
+            background: #ffffff;
+            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+        }
+
+        .search-box input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 55px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            font-size: 30px;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: #64748b;
+        }
+
+        /* TOOL GRID */
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .tool-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 24px;
+            transition: 0.25s ease;
+            display: block;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+            border-color: #bfdbfe;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+        }
+
+        .tool-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: #eff6ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .tool-card h3 {
+            font-size: 18px;
+            margin-bottom: 7px;
+            color: #111827;
+        }
+
+        .tool-card p {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .tool-card.disabled {
+            opacity: 0.65;
+            cursor: default;
+        }
+
+        .coming-soon {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #64748b;
+            background: #f1f5f9;
+            padding: 4px 8px;
+            border-radius: 20px;
+        }
+
+        /* PRIVACY */
+
+        .privacy-box {
+            background: #ffffff;
+            border: 1px solid #dbeafe;
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.04);
+        }
+
+        .privacy-box .big-icon {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .privacy-box h2 {
+            margin-bottom: 10px;
+            color: #111827;
+        }
+
+        .privacy-box p {
+            max-width: 750px;
+            margin: auto;
+            color: #64748b;
+        }
+
+        /* HOW IT WORKS */
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .step {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+        }
+
+        .step-number {
+            width: 42px;
+            height: 42px;
+            margin: 0 auto 15px;
+            background: #2563eb;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+
+        .step h3 {
+            margin-bottom: 7px;
+        }
+
+        .step p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* FAQ */
+
+        .faq {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        details {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            padding: 18px 20px;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        details p {
+            margin-top: 12px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #111827;
+            color: #ffffff;
+            padding: 45px 0 25px;
+            margin-top: 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 35px;
+        }
+
+        .footer-logo {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .footer-about {
+            color: #9ca3af;
+            max-width: 500px;
+            font-size: 14px;
+        }
+
+        footer h3 {
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin-bottom: 8px;
+        }
+
+        footer li a {
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        footer li a:hover {
+            color: #ffffff;
+        }
+
+        .copyright {
+            border-top: 1px solid #374151;
+            margin-top: 30px;
+            padding-top: 20px;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 13px;
+        }
+
+        /* NO RESULTS */
+
+        #noResults {
+            display: none;
+            text-align: center;
+            color: #64748b;
+            margin-top: 20px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 55px 0 45px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .tool-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            .container {
+                width: 90%;
+            }
+
+            .navbar {
+                min-height: 60px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .tool-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tool-card {
+                padding: 20px;
+            }
+
+            section {
+                padding: 45px 0;
+            }
+
+            .privacy-box {
+                padding: 25px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+    <div class="container navbar">
+
+        <a href="index.html" class="logo">
+            FileSwift<span>Tools</span>
+        </a>
+
+        <nav>
+            <a href="#pdf-tools">PDF Tools</a>
+            <a href="#image-tools">Image Tools</a>
+            <a href="#faq">FAQ</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<!-- HERO -->
+
+<main>
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-badge">
+            ⚡ Free • Fast • Privacy Focused
+        </div>
+
+        <h1>
+            Free <span>PDF & Image</span> Tools
+        </h1>
+
+        <p>
+            Convert, merge, split, compress and manage your files
+            quickly with simple online tools.
+        </p>
+
+        <div class="search-box">
+
+            <input
+                type="search"
+                id="toolSearch"
+                placeholder="Search for a tool..."
+                aria-label="Search tools"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- POPULAR TOOLS -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Popular Tools</h2>
+
+            <p>
+                Start with our most useful file tools.
+            </p>
+
+        </div>
+
+        <div class="tool-grid" id="popularTools">
+
+            <a href="jpg-to-pdf.html"
+               class="tool-card"
+               data-name="jpg to pdf image to pdf convert">
+
+                <div class="tool-icon">📄</div>
+
+                <h3>JPG to PDF</h3>
+
+                <p>
+                    Convert JPG images into a PDF file quickly.
+                </p>
+
+            </a>
+
+
+            <a href="pdf-to-jpg.html"
+               class="tool-card"
+               data-name="pdf to jpg pdf to image">
+
+                <div class="tool-icon">🖼️</div>
+
+                <h3>PDF to JPG</h3>
+
+                <p>
+                    Convert PDF pages into JPG images.
+                </p>
+
+            </a>
+
+
+            <a href="merge-pdf.html"
+               class="tool-card"
+               data-name="merge pdf combine pdf">
+
+                <div class="tool-icon">📚</div>
+
+                <h3>Merge PDF</h3>
+
+                <p>
+                    Combine multiple PDF files into one PDF.
+                </p>
+
+            </a>
+
+
+            <a href="split-pdf.html"
+               class="tool-card"
+               data-name="split pdf separate pdf">
+
+                <div class="tool-icon">✂️</div>
+
+                <h3>Split PDF</h3>
+
+                <p>
+                    Split a PDF into separate pages or files.
+                </p>
+
+            </a>
+
+
+            <a href="compress-pdf.html"
+               class="tool-card"
+               data-name="compress pdf reduce pdf size">
+
+                <div class="tool-icon">🗜️</div>
+
+                <h3>Compress PDF</h3>
+
+                <p>
+                    Reduce PDF file size for easier sharing.
+                </p>
+
+            </a>
+
+
+            <a href="compress-image.html"
+               class="tool-card"
+               data-name="compress image jpg png image compressor">
+
+                <div class="tool-icon">📦</div>
+
+                <h3>Compress Image</h3>
+
+                <p>
+                    Reduce image size while keeping good quality.
+                </p>
+
+            </a>
+
+        </div>
+
+        <p id="noResults">
+            No matching tool found.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- PDF TOOLS -->
+
+<section id="pdf-tools">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>📄 PDF Tools</h2>
+
+            <p>
+                Useful tools for working with PDF files.
+            </p>
+
+        </div>
+
+        <div class="tool-grid">
+
+            <a href="jpg-to-pdf.html"
+               class="tool-card"
+               data-name="jpg to pdf">
+
+                <div class="tool-icon">🖼️</div>
+
+                <h3>JPG to PDF</h3>
+
+                <p>Convert images into PDF documents.</p>
+
+            </a>
+
+
+            <a href="pdf-to-jpg.html"
+               class="tool-card"
+               data-name="pdf to jpg">
+
+                <div class="tool-icon">📄</div>
+
+                <h3>PDF to JPG</h3>
+
+                <p>Convert PDF pages into images.</p>
+
+            </a>
+
+
+            <a href="merge-pdf.html"
+               class="tool-card"
+               data-name="merge pdf">
+
+                <div class="tool-icon">📚</div>
+
+                <h3>Merge PDF</h3>
+
+                <p>Combine multiple PDF files.</p>
+
+            </a>
+
+
+            <a href="split-pdf.html"
+               class="tool-card"
+               data-name="split pdf">
+
+                <div class="tool-icon">✂️</div>
+
+                <h3>Split PDF</h3>
+
+                <p>Separate PDF pages into files.</p>
+
+            </a>
+
+
+            <a href="compress-pdf.html"
+               class="tool-card"
+               data-name="compress pdf">
+
+                <div class="tool-icon">🗜️</div>
+
+                <h3>Compress PDF</h3>
+
+                <p>Reduce PDF file size.</p>
+
+            </a>
+
+
+            <div class="tool-card disabled"
+                 data-name="pdf to png">
+
+                <div class="tool-icon">🖼️</div>
+
+                <h3>PDF to PNG</h3>
+
+                <p>Convert PDF pages into PNG images.</p>
+
+                <span class="coming-soon">COMING SOON</span>
+
+            </div>
+
+
+            <div class="tool-card disabled"
+                 data-name="rotate pdf">
+
+                <div class="tool-icon">🔄</div>
+
+                <h3>Rotate PDF</h3>
+
+                <p>Rotate PDF pages easily.</p>
+
+                <span class="coming-soon">COMING SOON</span>
+
+            </div>
+
+
+            <div class="tool-card disabled"
+                 data-name="extract pdf pages">
+
+                <div class="tool-icon">📑</div>
+
+                <h3>Extract PDF Pages</h3>
+
+                <p>Extract selected pages from a PDF.</p>
+
+                <span class="coming-soon">COMING SOON</span>
+
+            </div>
+
+
+            <div class="tool-card disabled"
+                 data-name="delete pdf pages">
+
+                <div class="tool-icon">🗑️</div>
+
+                <h3>Delete PDF Pages</h3>
+
+                <p>Remove unwanted pages from a PDF.</p>
+
+                <span class="coming-soon">COMING SOON</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- IMAGE TOOLS -->
+
+<section id="image-tools">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>🖼️ Image Tools</h2>
+
+            <p>
+                Simple tools for converting and optimizing images.
+            </p>
+
+        </div>
+
+        <div class="tool-grid">
+
+            <a href="compress-image.html"
+               class="tool-card"
+               data-name="compress image">
+
+                <div class="tool-icon">📦</div>
+
+                <h3>Compress Image</h3>
+
+                <p>Reduce image file size.</p>
+
+            </a>
+
+
+            <div class="tool-card disabled"
+                 data-name="resize image">
+
+                <div class="tool-icon">📐</div>
+
+                <h3>Resize Image</h3>
+
+                <p>Resize images to your desired dimensions.</p>
+
+                <span class="coming-soon">COMING SOON</span>
+
+            </div>
+
+
+            <div class="tool-card disabled"
+                 data-name="jpg to png">
+
+                <div class="tool-icon">🔄</div>
+
+                <h3>JPG to PNG</h3>
+
+                <p>Convert JPG images to PNG.</p>
+
+                <span class="coming-soon">COMING SOON</span>
+
+            </div>
+
+
+            <div class="tool-card disabled"
+                 data-name="png to jpg">
+
+                <div class="tool-icon">🔄</div>
+
+                <h3>PNG to JPG</h3>
+
+                <p>Convert PNG images to JPG.</p>
+
+                <span class="coming-soon">COMING SOON</span>
+
+            </div>
+
+
+            <div class="tool-card disabled"
+                 data-name="webp to jpg">
+
+                <div class="tool-icon">🔄</div>
+
+                <h3>WebP to JPG</h3>
+
+                <p>Convert WebP images to JPG.</p>
+
+                <span class="coming-soon">COMING SOON</span>
+
+            </div>
+
+
+            <div class="tool-card disabled"
+                 data-name="heic to jpg">
+
+                <div class="tool-icon">📱</div>
+
+                <h3>HEIC to JPG</h3>
+
+                <p>Convert HEIC images to JPG.</p>
+
+                <span class="coming-soon">COMING SOON</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRIVACY -->
+
+<section>
+
+    <div class="container">
+
+        <div class="privacy-box">
+
+            <div class="big-icon">🔐</div>
+
+            <h2>Privacy-Focused Tools</h2>
+
+            <p>
+                Our goal is to process supported files directly in your
+                browser whenever technically possible. Your files should
+                not need to be uploaded to a server for browser-based
+                processing.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>How It Works</h2>
+
+            <p>
+                Simple tools with a simple process.
+            </p>
+
+        </div>
+
+        <div class="steps">
+
+            <div class="step">
+
+                <div class="step-number">1</div>
+
+                <h3>Select</h3>
+
+                <p>
+                    Choose the file you want to process.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">2</div>
+
+                <h3>Process</h3>
+
+                <p>
+                    Use the selected tool to process your file.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">3</div>
+
+                <h3>Download</h3>
+
+                <p>
+                    Download your processed file.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FAQ -->
+
+<section id="faq">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Frequently Asked Questions</h2>
+
+            <p>
+                Common questions about FileSwift Tools.
+            </p>
+
+        </div>
+
+        <div class="faq">
+
+            <details>
+
+                <summary>
+                    Are FileSwift Tools free?
+                </summary>
+
+                <p>
+                    Yes. Our goal is to provide useful PDF and image
+                    tools that are simple and free to use.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Do I need to create an account?
+                </summary>
+
+                <p>
+                    No account is required for the basic tools planned
+                    for this website.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Are my files uploaded to a server?
+                </summary>
+
+                <p>
+                    Tools designed for browser-based processing can
+                    process files directly on your device. We will
+                    clearly explain the processing method on each tool
+                    page.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Can I use these tools on a mobile phone?
+                </summary>
+
+                <p>
+                    Yes. The website is being designed with a
+                    mobile-first interface for phones, tablets and
+                    desktop computers.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Will more tools be added?
+                </summary>
+
+                <p>
+                    Yes. More PDF and image tools will be added
+                    gradually.
+                </p>
+
+            </details>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+
+                <div class="footer-logo">
+                    FileSwift Tools
+                </div>
+
+                <p class="footer-about">
+                    Free and simple PDF and image tools designed to
+                    help you convert, compress and manage files
+                    quickly.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>Tools</h3>
+
+                <ul>
+
+                    <li>
+                        <a href="jpg-to-pdf.html">
+                            JPG to PDF
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="pdf-to-jpg.html">
+                            PDF to JPG
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="merge-pdf.html">
+                            Merge PDF
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="compress-pdf.html">
+                            Compress PDF
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h3>Website</h3>
+
+                <ul>
+
+                    <li>
+                        <a href="#faq">
+                            FAQ
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="about.html">
+                            About Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">
+                            Contact
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="privacy.html">
+                            Privacy Policy
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © <span id="year"></span> FileSwift Tools.
+            All rights reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+    /* CURRENT YEAR */
+
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+
+    /* TOOL SEARCH */
+
+    const searchInput =
+        document.getElementById("toolSearch");
+
+    const toolCards =
+        document.querySelectorAll(".tool-card");
+
+    const noResults =
+        document.getElementById("noResults");
+
+
+    searchInput.addEventListener("input", function () {
+
+        const searchTerm =
+            this.value.toLowerCase().trim();
+
+        let visibleCount = 0;
+
+        toolCards.forEach(function (card) {
+
+            const toolName =
+                card.getAttribute("data-name") || "";
+
+            const cardText =
+                card.textContent.toLowerCase();
+
+            const searchableText =
+                toolName + " " + cardText;
+
+            if (
+                searchTerm === "" ||
+                searchableText.includes(searchTerm)
+            ) {
+
+                card.style.display = "";
+
+                visibleCount++;
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+
+        if (searchTerm !== "" && visibleCount === 0) {
+
+            noResults.style.display = "block";
+
+        } else {
+
+            noResults.style.display = "none";
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
+```
