@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PDF to JPG Converter - Free Online | FileSwift Tools</title>
+
+  <meta name="description"
+        content="Convert PDF pages to JPG images online for free. Download individual JPG pages or all pages as a ZIP file. Fast, private and browser-based.">
+
+  <meta name="keywords"
+        content="pdf to jpg, pdf to jpg converter, convert pdf to image, pdf pages to jpg, free pdf to jpg">
+
+  <meta name="robots" content="index, follow">
+
+  <!-- PDF.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs"
+          type="module"></script>
+
+  <!-- JSZip -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f7fb;
+      color: #1f2937;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .logo {
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: 800;
+      color: #2563eb;
+    }
+
+    .home-btn {
+      text-decoration: none;
+      background: #eef2ff;
+      color: #3730a3;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 35px 16px 60px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: 34px;
+      margin: 0 0 12px;
+      color: #111827;
+    }
+
+    .hero p {
+      margin: 0 auto;
+      max-width: 680px;
+      line-height: 1.7;
+      color: #6b7280;
+    }
+
+    .tool-box {
+      background: white;
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    }
+
+    .upload-area {
+      border: 2px dashed #93c5fd;
+      background: #eff6ff;
+      border-radius: 14px;
+      padding: 35px 20px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .upload-area:hover {
+      background: #dbeafe;
+      border-color: #2563eb;
+    }
+
+    .upload-icon {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .upload-area h2 {
+      margin: 5px 0 8px;
+      font-size: 20px;
+    }
+
+    .upload-area p {
+      margin: 0 0 16px;
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    .upload-btn {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      padding: 11px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    #fileInput {
+      display: none;
+    }
+
+    .file-info {
+      display: none;
+      margin-top: 18px;
+      padding: 12px 15px;
+      background: #f9fafb;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .settings {
+      margin-top: 25px;
+      padding-top: 22px;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .settings h2 {
+      font-size: 19px;
+      margin: 0 0 15px;
+    }
+
+    .setting-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .setting label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    .setting select {
+      width: 100%;
+      padding: 11px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background: white;
+      font-size: 14px;
+    }
+
+    .convert-area {
+      margin-top: 25px;
+    }
+
+    .convert-btn {
+      width: 100%;
+      border: none;
+      background: #16a34a;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 9px;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .convert-btn:hover {
+      background: #15803d;
+    }
+
+    .convert-btn:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+    }
+
+    .status {
+      text-align: center;
+      margin-top: 14px;
+      min-height: 22px;
+      font-size: 14px;
+      color: #4b5563;
+    }
+
+    .results {
+      display: none;
+      margin-top: 28px;
+    }
+
+    .results-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .results-header h2 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .zip-btn {
+      border: none;
+      background: #7c3aed;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .zip-btn:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+    }
+
+    .result-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .result-item {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 14px;
+      background: white;
+    }
+
+    .result-preview {
+      width: 100%;
+      max-height: 500px;
+      object-fit: contain;
+      display: block;
+      background: #f3f4f6;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    .result-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .page-name {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .download-page-btn {
+      text-decoration: none;
+      background: #2563eb;
+      color: white;
+      padding: 9px 13px;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .privacy-note {
+      margin-top: 25px;
+      padding: 15px;
+      background: #f8fafc;
+      border-radius: 10px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #64748b;
+      text-align: center;
+    }
+
+    .content-section {
+      margin-top: 35px;
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+    }
+
+    .content-section h2 {
+      margin-top: 0;
+      color: #111827;
+    }
+
+    .content-section h3 {
+      margin-bottom: 7px;
+      color: #1f2937;
+    }
+
+    .content-section p,
+    .content-section li {
+      line-height: 1.7;
+      color: #4b5563;
+      font-size: 15px;
+    }
+
+    footer {
+      background: #111827;
+      color: #d1d5db;
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 40px;
+      font-size: 13px;
+    }
+
+    footer a {
+      color: #93c5fd;
+      text-decoration: none;
+      margin: 0 7px;
+    }
+
+    @media (max-width: 600px) {
+
+      .header-inner {
+        padding: 13px 14px;
+      }
+
+      .logo {
+        font-size: 19px;
+      }
+
+      .home-btn {
+        font-size: 12px;
+        padding: 8px 10px;
+      }
+
+      .container {
+        padding: 25px 12px 45px;
+      }
+
+      .hero h1 {
+        font-size: 27px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .tool-box {
+        padding: 15px;
+      }
+
+      .upload-area {
+        padding: 28px 14px;
+      }
+
+      .setting-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .results-header {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .zip-btn {
+        width: 100%;
+      }
+
+      .result-info {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .download-page-btn {
+        text-align: center;
+      }
+
+      .content-section {
+        padding: 18px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="header-inner">
+
+    <a href="index.html" class="logo">
+      FileSwift Tools
+    </a>
+
+    <a href="index.html" class="home-btn">
+      ← All Tools
+    </a>
+
+  </div>
+
+</header>
+
+
+<main class="container">
+
+  <section class="hero">
+
+    <h1>PDF to JPG Converter</h1>
+
+    <p>
+      Convert PDF pages into high-quality JPG images.
+      Download individual pages or all converted images as a ZIP file.
+    </p>
+
+  </section>
+
+
+  <section class="tool-box">
+
+    <!-- Upload -->
+
+    <div class="upload-area" id="uploadArea">
+
+      <div class="upload-icon">📄➡️🖼️</div>
+
+      <h2>Select PDF File</h2>
+
+      <p>
+        Choose one PDF file to convert its pages into JPG images.
+      </p>
+
+      <label for="fileInput" class="upload-btn">
+        Choose PDF
+      </label>
+
+      <input
+        type="file"
+        id="fileInput"
+        accept="application/pdf"
+      >
+
+    </div>
+
+
+    <div class="file-info" id="fileInfo"></div>
+
+
+    <!-- Settings -->
+
+    <section class="settings">
+
+      <h2>Image Settings</h2>
+
+      <div class="setting-grid">
+
+        <div class="setting">
+
+          <label for="quality">
+            JPG Quality
+          </label>
+
+          <select id="quality">
+
+            <option value="0.95">
+              High Quality
+            </option>
+
+            <option value="0.85" selected>
+              Standard
+            </option>
+
+            <option value="0.70">
+              Smaller File
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="setting">
+
+          <label for="scale">
+            Resolution
+          </label>
+
+          <select id="scale">
+
+            <option value="1.5">
+              Standard
+            </option>
+
+            <option value="2" selected>
+              High
+            </option>
+
+            <option value="2.5">
+              Very High
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Convert -->
+
+    <div class="convert-area">
+
+      <button
+        class="convert-btn"
+        id="convertBtn"
+        disabled>
+
+        Convert PDF to JPG
+
+      </button>
+
+      <div
+        class="status"
+        id="status">
+      </div>
+
+    </div>
+
+
+    <!-- Results -->
+
+    <section
+      class="results"
+      id="results">
+
+      <div class="results-header">
+
+        <h2>
+          Converted Pages
+        </h2>
+
+        <button
+          class="zip-btn"
+          id="zipBtn">
+
+          📦 Download All as ZIP
+
+        </button>
+
+      </div>
+
+
+      <div
+        class="result-list"
+        id="resultList">
+      </div>
+
+    </section>
+
+
+    <!-- Privacy -->
+
+    <div class="privacy-note">
+
+      🔒 <strong>Privacy:</strong>
+      Your PDF is processed directly in your browser.
+      This tool does not upload your PDF to a FileSwift server.
+
+    </div>
+
+  </section>
+
+
+  <!-- SEO Content -->
+
+  <section class="content-section">
+
+    <h2>
+      Free PDF to JPG Converter
+    </h2>
+
+    <p>
+      FileSwift Tools lets you convert PDF pages into JPG images
+      directly in your browser. You can convert PDF documents into
+      individual image files and download them separately or together
+      as a ZIP file.
+    </p>
+
+
+    <h3>
+      How to convert PDF to JPG?
+    </h3>
+
+    <ol>
+
+      <li>
+        Tap <strong>Choose PDF</strong>.
+      </li>
+
+      <li>
+        Select your PDF file.
+      </li>
+
+      <li>
+        Choose JPG quality and resolution.
+      </li>
+
+      <li>
+        Tap <strong>Convert PDF to JPG</strong>.
+      </li>
+
+      <li>
+        Preview the converted pages.
+      </li>
+
+      <li>
+        Download individual JPG files or all pages as a ZIP.
+      </li>
+
+    </ol>
+
+
+    <h3>
+      Is this PDF to JPG converter free?
+    </h3>
+
+    <p>
+      Yes. The converter is free to use and does not require
+      registration or an account.
+    </p>
+
+
+    <h3>
+      Are my PDF files uploaded?
+    </h3>
+
+    <p>
+      No. The conversion is performed inside your browser.
+      Your selected PDF is not sent to a FileSwift server by this tool.
+    </p>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <div>
+    © 2026 FileSwift Tools
+  </div>
+
+  <div style="margin-top:10px;">
+
+    <a href="index.html">
+      Home
+    </a>
+
+    <a href="privacy.html">
+      Privacy
+    </a>
+
+    <a href="about.html">
+      About
+    </a>
+
+    <a href="contact.html">
+      Contact
+    </a>
+
+  </div>
+
+</footer>
+
+
+<script type="module">
+
+  import * as pdfjsLib
+    from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs";
+
+
+  /*
+    PDF.js worker
+  */
+
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs";
+
+
+  const fileInput =
+    document.getElementById("fileInput");
+
+  const uploadArea =
+    document.getElementById("uploadArea");
+
+  const fileInfo =
+    document.getElementById("fileInfo");
+
+  const convertBtn =
+    document.getElementById("convertBtn");
+
+  const status =
+    document.getElementById("status");
+
+  const results =
+    document.getElementById("results");
+
+  const resultList =
+    document.getElementById("resultList");
+
+  const zipBtn =
+    document.getElementById("zipBtn");
+
+  const quality =
+    document.getElementById("quality");
+
+  const scale =
+    document.getElementById("scale");
+
+
+  let selectedFile = null;
+
+  let convertedPages = [];
+
+
+  /*
+    Upload area
+  */
+
+  uploadArea.addEventListener(
+    "click",
+    function(event) {
+
+      if (
+        event.target.tagName !== "LABEL"
+      ) {
+
+        fileInput.click();
+
+      }
+
+    }
+  );
+
+
+  /*
+    File selection
+  */
+
+  fileInput.addEventListener(
+    "change",
+    function() {
+
+      if (
+        !fileInput.files ||
+        fileInput.files.length === 0
+      ) {
+
+        return;
+
+      }
+
+
+      const file =
+        fileInput.files[0];
+
+
+      if (
+        file.type !== "application/pdf"
+      ) {
+
+        status.textContent =
+          "Please select a valid PDF file.";
+
+        return;
+
+      }
+
+
+      selectedFile = file;
+
+
+      fileInfo.style.display =
+        "block";
+
+
+      fileInfo.innerHTML =
+        "<strong>Selected PDF:</strong> " +
+        escapeHtml(file.name) +
+        " • " +
+        formatFileSize(file.size);
+
+
+      convertBtn.disabled =
+        false;
+
+
+      results.style.display =
+        "none";
+
+
+      resultList.innerHTML =
+        "";
+
+
+      convertedPages =
+        [];
+
+
+      status.textContent =
+        "";
+
+    }
+  );
+
+
+  /*
+    Convert PDF
+  */
+
+  convertBtn.addEventListener(
+    "click",
+    async function() {
+
+      if (!selectedFile) {
+
+        return;
+
+      }
+
+
+      convertBtn.disabled =
+        true;
+
+      zipBtn.disabled =
+        true;
+
+
+      results.style.display =
+        "none";
+
+
+      resultList.innerHTML =
+        "";
+
+      convertedPages =
+        [];
+
+
+      try {
+
+        status.textContent =
+          "Reading PDF...";
+
+
+        const arrayBuffer =
+          await selectedFile.arrayBuffer();
+
+
+        const pdf =
+          await pdfjsLib.getDocument({
+            data: arrayBuffer
+          }).promise;
+
+
+        const totalPages =
+          pdf.numPages;
+
+
+        results.style.display =
+          "block";
+
+
+        for (
+          let pageNumber = 1;
+          pageNumber <= totalPages;
+          pageNumber++
+        ) {
+
+          status.textContent =
+            "Converting page " +
+            pageNumber +
+            " of " +
+            totalPages +
+            "...";
+
+
+          const page =
+            await pdf.getPage(pageNumber);
+
+
+          const renderScale =
+            parseFloat(scale.value);
+
+
+          const viewport =
+            page.getViewport({
+              scale: renderScale
+            });
+
+
+          const canvas =
+            document.createElement("canvas");
+
+
+          const context =
+            canvas.getContext("2d");
+
+
+          canvas.width =
+            Math.ceil(viewport.width);
+
+
+          canvas.height =
+            Math.ceil(viewport.height);
+
+
+          /*
+            White background
+            so transparent PDF areas
+            become white in JPG.
+          */
+
+          context.save();
+
+          context.fillStyle =
+            "#ffffff";
+
+          context.fillRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+          );
+
+          context.restore();
+
+
+          await page.render({
+
+            canvasContext: context,
+
+            viewport: viewport,
+
+            background: "white"
+
+          }).promise;
+
+
+          const jpgQuality =
+            parseFloat(quality.value);
+
+
+          const blob =
+            await new Promise(
+              resolve => {
+
+                canvas.toBlob(
+                  resolve,
+                  "image/jpeg",
+                  jpgQuality
+                );
+
+              }
+            );
+
+
+          if (!blob) {
+
+            throw new Error(
+              "Could not create JPG."
+            );
+
+          }
+
+
+          const url =
+            URL.createObjectURL(blob);
+
+
+          const fileName =
+            "fileswift-page-" +
+            String(pageNumber) +
+            ".jpg";
+
+
+          convertedPages.push({
+
+            pageNumber:
+              pageNumber,
+
+            blob:
+              blob,
+
+            url:
+              url,
+
+            fileName:
+              fileName
+
+          });
+
+
+          /*
+            Add result card
+          */
+
+          const item =
+            document.createElement("div");
+
+
+          item.className =
+            "result-item";
+
+
+          const preview =
+            document.createElement("img");
+
+
+          preview.className =
+            "result-preview";
+
+
+          preview.src =
+            url;
+
+
+          preview.alt =
+            "PDF page " +
+            pageNumber +
+            " converted to JPG";
+
+
+          const info =
+            document.createElement("div");
+
+
+          info.className =
+            "result-info";
+
+
+          const name =
+            document.createElement("div");
+
+
+          name.className =
+            "page-name";
+
+
+          name.textContent =
+            "Page " +
+            pageNumber;
+
+
+          const download =
+            document.createElement("a");
+
+
+          download.className =
+            "download-page-btn";
+
+
+          download.href =
+            url;
+
+
+          download.download =
+            fileName;
+
+
+          download.textContent =
+            "⬇ Download JPG";
+
+
+          info.appendChild(name);
+
+          info.appendChild(download);
+
+
+          item.appendChild(preview);
+
+          item.appendChild(info);
+
+
+          resultList.appendChild(item);
+
+        }
+
+
+        status.textContent =
+          "✅ " +
+          totalPages +
+          " page" +
+          (totalPages > 1 ? "s" : "") +
+          " converted successfully.";
+
+
+        zipBtn.disabled =
+          false;
+
+
+      }
+
+      catch (error) {
+
+        console.error(error);
+
+
+        status.textContent =
+          "❌ Could not convert this PDF. Please try another PDF file.";
+
+        results.style.display =
+          "none";
+
+      }
+
+      finally {
+
+        convertBtn.disabled =
+          false;
+
+      }
+
+    }
+  );
+
+
+  /*
+    Download all pages as ZIP
+  */
+
+  zipBtn.addEventListener(
+    "click",
+    async function() {
+
+      if (
+        convertedPages.length === 0
+      ) {
+
+        return;
+
+      }
+
+
+      zipBtn.disabled =
+        true;
+
+
+      zipBtn.textContent =
+        "Creating ZIP...";
+
+
+      try {
+
+        const zip =
+          new JSZip();
+
+
+        convertedPages.forEach(
+          function(page) {
+
+            zip.file(
+              page.fileName,
+              page.blob
+            );
+
+          }
+        );
+
+
+        const zipBlob =
+          await zip.generateAsync({
+
+            type: "blob",
+
+            compression:
+              "DEFLATE",
+
+            compressionOptions: {
+              level: 6
+            }
+
+          });
+
+
+        const zipUrl =
+          URL.createObjectURL(
+            zipBlob
+          );
+
+
+        const link =
+          document.createElement("a");
+
+
+        link.href =
+          zipUrl;
+
+
+        link.download =
+          "fileswift-pdf-pages.zip";
+
+
+        document.body.appendChild(link);
+
+
+        link.click();
+
+
+        link.remove();
+
+
+        setTimeout(
+          function() {
+
+            URL.revokeObjectURL(
+              zipUrl
+            );
+
+          },
+          1000
+        );
+
+
+        status.textContent =
+          "✅ ZIP file downloaded successfully.";
+
+      }
+
+      catch (error) {
+
+        console.error(error);
+
+        status.textContent =
+          "❌ Could not create ZIP file.";
+
+      }
+
+      finally {
+
+        zipBtn.disabled =
+          false;
+
+        zipBtn.textContent =
+          "📦 Download All as ZIP";
+
+      }
+
+    }
+  );
+
+
+  /*
+    File size
+  */
+
+  function formatFileSize(bytes) {
+
+    if (bytes < 1024) {
+
+      return bytes + " B";
+
+    }
+
+
+    if (
+      bytes <
+      1024 * 1024
+    ) {
+
+      return (
+        bytes / 1024
+      ).toFixed(1) +
+      " KB";
+
+    }
+
+
+    return (
+      bytes /
+      (1024 * 1024)
+    ).toFixed(2) +
+    " MB";
+
+  }
+
+
+  /*
+    Escape filename
+  */
+
+  function escapeHtml(text) {
+
+    const div =
+      document.createElement("div");
+
+    div.textContent =
+      text;
+
+    return div.innerHTML;
+
+  }
+
+</script>
+
+</body>
+</html>
