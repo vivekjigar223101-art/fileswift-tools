@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Merge PDF Online Free | FileSwift Tools</title>
+
+<meta name="description" content="Merge multiple PDF files into one PDF online for free. Arrange, reorder and combine PDF documents securely in your browser.">
+
+<meta name="keywords" content="merge PDF, combine PDF, join PDF files, merge PDF online free">
+
+<meta name="robots" content="index, follow">
+
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fb;
+  color: #1f2937;
+}
+
+header {
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: auto;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #2563eb;
+  font-size: 22px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.home-btn {
+  background: #eef2ff;
+  color: #3730a3;
+  padding: 9px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.container {
+  max-width: 850px;
+  margin: auto;
+  padding: 35px 15px 60px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.hero h1 {
+  font-size: 34px;
+  margin: 0 0 12px;
+  color: #111827;
+}
+
+.hero p {
+  color: #6b7280;
+  line-height: 1.7;
+}
+
+.tool-box {
+  background: white;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+}
+
+.upload-area {
+  border: 2px dashed #93c5fd;
+  background: #eff6ff;
+  border-radius: 14px;
+  padding: 35px 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.upload-area:hover {
+  background: #dbeafe;
+}
+
+.upload-icon {
+  font-size: 45px;
+}
+
+.upload-area h2 {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.upload-area p {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.upload-btn {
+  display: inline-block;
+  background: #2563eb;
+  color: white;
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#fileInput {
+  display: none;
+}
+
+.file-info {
+  display: none;
+  margin-top: 18px;
+  padding: 12px;
+  background: #f9fafb;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.list-section {
+  display: none;
+  margin-top: 25px;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.list-header h2 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.clear-btn {
+  border: none;
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 9px 12px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.pdf-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pdf-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+.pdf-icon {
+  width: 48px;
+  height: 48px;
+  background: #fee2e2;
+  color: #dc2626;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.pdf-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.pdf-name {
+  font-size: 14px;
+  font-weight: bold;
+  overflow-wrap: anywhere;
+}
+
+.pdf-size {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 5px;
+}
+
+.item-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.item-buttons button {
+  width: 32px;
+  height: 29px;
+  border: 1px solid #d1d5db;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.item-buttons button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.remove-btn {
+  color: #dc2626;
+}
+
+.merge-area {
+  margin-top: 25px;
+}
+
+.merge-btn {
+  width: 100%;
+  border: none;
+  background: #16a34a;
+  color: white;
+  padding: 15px;
+  border-radius: 9px;
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.merge-btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.status {
+  text-align: center;
+  margin-top: 15px;
+  min-height: 22px;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.download-area {
+  display: none;
+  margin-top: 18px;
+  padding: 18px;
+  text-align: center;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  border-radius: 10px;
+}
+
+.download-btn {
+  display: inline-block;
+  background: #059669;
+  color: white;
+  padding: 11px 22px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.privacy-note {
+  margin-top: 25px;
+  padding: 15px;
+  background: #f8fafc;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #64748b;
+  text-align: center;
+}
+
+.content-section {
+  margin-top: 35px;
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+}
+
+.content-section h2 {
+  margin-top: 0;
+}
+
+.content-section h3 {
+  margin-bottom: 7px;
+}
+
+.content-section p,
+.content-section li {
+  line-height: 1.7;
+  color: #4b5563;
+  font-size: 15px;
+}
+
+footer {
+  background: #111827;
+  color: #d1d5db;
+  text-align: center;
+  padding: 25px 15px;
+  margin-top: 40px;
+  font-size: 13px;
+}
+
+footer a {
+  color: #93c5fd;
+  text-decoration: none;
+  margin: 0 7px;
+}
+
+@media(max-width:600px) {
+  .container {
+    padding: 25px 12px 45px;
+  }
+
+  .hero h1 {
+    font-size: 27px;
+  }
+
+  .tool-box {
+    padding: 15px;
+  }
+
+  .upload-area {
+    padding: 28px 14px;
+  }
+
+  .pdf-item {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .pdf-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .content-section {
+    padding: 18px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">FileSwift Tools</a>
+    <a href="index.html" class="home-btn">← All Tools</a>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <h1>Merge PDF Files Online</h1>
+    <p>
+      Combine multiple PDF documents into one PDF file.
+      Arrange your files in the correct order and download your merged document for free.
+    </p>
+  </section>
+
+  <section class="tool-box">
+
+    <div class="upload-area" id="uploadArea">
+      <div class="upload-icon">📚</div>
+      <h2>Select PDF Files</h2>
+      <p>Choose two or more PDF files to combine.</p>
+
+      <label for="fileInput" class="upload-btn">
+        Choose PDF Files
+      </label>
+
+      <input
+        type="file"
+        id="fileInput"
+        accept="application/pdf,.pdf"
+        multiple
+      >
+    </div>
+
+    <div class="file-info" id="fileInfo"></div>
+
+    <section class="list-section" id="listSection">
+
+      <div class="list-header">
+        <h2>PDF File Order</h2>
+        <button class="clear-btn" id="clearBtn" type="button">
+          Clear All
+        </button>
+      </div>
+
+      <div class="pdf-list" id="pdfList"></div>
+
+    </section>
+
+    <div class="merge-area">
+      <button class="merge-btn" id="mergeBtn" disabled>
+        Merge PDF Files
+      </button>
+
+      <div class="status" id="status"></div>
+
+      <div class="download-area" id="downloadArea">
+        <strong>✅ Your PDFs have been merged!</strong>
+        <br>
+        <a
+          href="#"
+          id="downloadBtn"
+          class="download-btn"
+          download="fileswift-merged.pdf">
+          Download Merged PDF
+        </a>
+      </div>
+    </div>
+
+    <div class="privacy-note">
+      🔒 <strong>Privacy:</strong>
+      Your PDF files are processed directly in your browser.
+      This tool does not upload your documents to a FileSwift server.
+    </div>
+
+  </section>
+
+  <section class="content-section">
+
+    <h2>Free Online PDF Merger</h2>
+
+    <p>
+      FileSwift Tools allows you to combine multiple PDF documents
+      into one file. Upload your documents, arrange their order,
+      and create a single merged PDF directly in your browser.
+    </p>
+
+    <h3>How to merge PDF files?</h3>
+
+    <ol>
+      <li>Tap Choose PDF Files.</li>
+      <li>Select two or more PDF documents.</li>
+      <li>Use the arrow buttons to arrange their order.</li>
+      <li>Remove any unwanted document.</li>
+      <li>Tap Merge PDF Files.</li>
+      <li>Download your merged PDF.</li>
+    </ol>
+
+    <h3>Is this PDF merger free?</h3>
+
+    <p>
+      Yes. You can combine PDF files for free without creating an account.
+    </p>
+
+    <h3>Are my documents uploaded?</h3>
+
+    <p>
+      No. PDF merging is performed locally in your browser.
+      Your selected documents are not sent to a FileSwift server.
+    </p>
+
+  </section>
+
+</main>
+
+<footer>
+  <div>© 2026 FileSwift Tools</div>
+
+  <div style="margin-top:10px;">
+    <a href="index.html">Home</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+
+const fileInput = document.getElementById("fileInput");
+const uploadArea = document.getElementById("uploadArea");
+const fileInfo = document.getElementById("fileInfo");
+const pdfList = document.getElementById("pdfList");
+const listSection = document.getElementById("listSection");
+const clearBtn = document.getElementById("clearBtn");
+const mergeBtn = document.getElementById("mergeBtn");
+const status = document.getElementById("status");
+const downloadArea = document.getElementById("downloadArea");
+const downloadBtn = document.getElementById("downloadBtn");
+
+let pdfFiles = [];
+let mergedUrl = null;
+
+
+/* Open file picker */
+
+uploadArea.addEventListener("click", function(event) {
+  if (event.target.tagName !== "LABEL") {
+    fileInput.click();
+  }
+});
+
+
+/* Add PDF files */
+
+fileInput.addEventListener("change", function() {
+  addFiles(fileInput.files);
+  fileInput.value = "";
+});
+
+
+function addFiles(fileList) {
+
+  const selected = Array.from(fileList);
+
+  const valid = selected.filter(file => {
+    return file.type === "application/pdf" ||
+           file.name.toLowerCase().endsWith(".pdf");
+  });
+
+  const invalidCount = selected.length - valid.length;
+
+  valid.forEach(file => {
+    pdfFiles.push(file);
+  });
+
+  renderFiles();
+
+  if (invalidCount > 0) {
+    status.textContent =
+      invalidCount + " unsupported file(s) skipped. Please select PDF files only.";
+  } else {
+    status.textContent = "";
+  }
+
+}
+
+
+/* Render file list */
+
+function renderFiles() {
+
+  pdfList.innerHTML = "";
+
+  if (pdfFiles.length === 0) {
+
+    listSection.style.display = "none";
+    fileInfo.style.display = "none";
+    mergeBtn.disabled = true;
+
+    return;
+
+  }
+
+  listSection.style.display = "block";
+  fileInfo.style.display = "block";
+
+  fileInfo.textContent =
+    pdfFiles.length + " PDF file(s) selected";
+
+  pdfFiles.forEach((file, index) => {
+
+    const item = document.createElement("div");
+    item.className = "pdf-item";
+
+    const icon = document.createElement("div");
+    icon.className = "pdf-icon";
+    icon.textContent = "PDF";
+
+    const details = document.createElement("div");
+    details.className = "pdf-details";
+
+    const name = document.createElement("div");
+    name.className = "pdf-name";
+    name.textContent = file.name;
+
+    const size = document.createElement("div");
+    size.className = "pdf-size";
+    size.textContent = formatSize(file.size);
+
+    details.appendChild(name);
+    details.appendChild(size);
+
+    const buttons = document.createElement("div");
+    buttons.className = "item-buttons";
+
+    const up = document.createElement("button");
+    up.type = "button";
+    up.textContent = "↑";
+    up.title = "Move up";
+    up.disabled = index === 0;
+
+    up.onclick = function() {
+      moveFile(index, -1);
+    };
+
+    const down = document.createElement("button");
+    down.type = "button";
+    down.textContent = "↓";
+    down.title = "Move down";
+    down.disabled = index === pdfFiles.length - 1;
+
+    down.onclick = function() {
+      moveFile(index, 1);
+    };
+
+    const remove = document.createElement("button");
+    remove.type = "button";
+    remove.textContent = "×";
+    remove.title = "Remove file";
+    remove.className = "remove-btn";
+
+    remove.onclick = function() {
+      removeFile(index);
+    };
+
+    buttons.appendChild(up);
+    buttons.appendChild(down);
+    buttons.appendChild(remove);
+
+    item.appendChild(icon);
+    item.appendChild(details);
+    item.appendChild(buttons);
+
+    pdfList.appendChild(item);
+
+  });
+
+  mergeBtn.disabled = pdfFiles.length < 2;
+
+}
+
+
+/* Move PDF */
+
+function moveFile(index, direction) {
+
+  const newIndex = index + direction;
+
+  if (newIndex < 0 || newIndex >= pdfFiles.length) {
+    return;
+  }
+
+  const temp = pdfFiles[index];
+
+  pdfFiles[index] = pdfFiles[newIndex];
+
+  pdfFiles[newIndex] = temp;
+
+  renderFiles();
+
+}
+
+
+/* Remove PDF */
+
+function removeFile(index) {
+
+  pdfFiles.splice(index, 1);
+
+  renderFiles();
+
+  downloadArea.style.display = "none";
+
+  if (mergedUrl) {
+    URL.revokeObjectURL(mergedUrl);
+    mergedUrl = null;
+  }
+
+}
+
+
+/* Clear all */
+
+clearBtn.addEventListener("click", function() {
+
+  pdfFiles = [];
+
+  renderFiles();
+
+  status.textContent = "";
+
+  downloadArea.style.display = "none";
+
+  if (mergedUrl) {
+    URL.revokeObjectURL(mergedUrl);
+    mergedUrl = null;
+  }
+
+});
+
+
+/* File size */
+
+function formatSize(bytes) {
+
+  if (bytes < 1024) {
+    return bytes + " B";
+  }
+
+  if (bytes < 1024 * 1024) {
+    return (bytes / 1024).toFixed(1) + " KB";
+  }
+
+  return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+
+}
+
+
+/* Merge PDF */
+
+mergeBtn.addEventListener("click", async function() {
+
+  if (pdfFiles.length < 2) {
+    status.textContent = "Please select at least two PDF files.";
+    return;
+  }
+
+  mergeBtn.disabled = true;
+
+  downloadArea.style.display = "none";
+
+  status.textContent = "Starting PDF merge...";
+
+  try {
+
+    const { PDFDocument } = PDFLib;
+
+    const mergedPdf = await PDFDocument.create();
+
+    for (let i = 0; i < pdfFiles.length; i++) {
+
+      const file = pdfFiles[i];
+
+      status.textContent =
+        "Processing PDF " + (i + 1) +
+        " of " + pdfFiles.length + "...";
+
+      const bytes = await file.arrayBuffer();
+
+      const sourcePdf =
+        await PDFDocument.load(bytes);
+
+      const copiedPages =
+        await mergedPdf.copyPages(
+          sourcePdf,
+          sourcePdf.getPageIndices()
+        );
+
+      copiedPages.forEach(page => {
+        mergedPdf.addPage(page);
+      });
+
+    }
+
+    status.textContent = "Creating merged PDF...";
+
+    const mergedBytes = await mergedPdf.save();
+
+    const blob = new Blob(
+      [mergedBytes],
+      { type: "application/pdf" }
+    );
+
+    if (mergedUrl) {
+      URL.revokeObjectURL(mergedUrl);
+    }
+
+    mergedUrl = URL.createObjectURL(blob);
+
+    downloadBtn.href = mergedUrl;
+
+    downloadBtn.download = "fileswift-merged.pdf";
+
+    downloadArea.style.display = "block";
+
+    status.textContent = "PDF files merged successfully!";
+
+  }
+
+  catch(error) {
+
+    console.error(error);
+
+    status.textContent =
+      "Unable to merge these PDFs. Check that the files are valid and not password-protected.";
+
+  }
+
+  finally {
+
+    mergeBtn.disabled = pdfFiles.length < 2;
+
+  }
+
+});
+
+</script>
+
+</body>
+</html>
