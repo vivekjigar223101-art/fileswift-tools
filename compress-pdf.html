@@ -1,0 +1,619 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compress PDF Online Free - FileSwift Tools</title>
+  <meta name="description" content="Compress PDF files online free with FileSwift Tools. Choose quality levels and create a smaller image-based PDF directly in your browser.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://vivekjigar223101-art.github.io/fileswift-tools/compress-pdf.html">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #172033;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #102b50;
+      color: white;
+      padding: 18px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: bold;
+    }
+
+    nav a {
+      margin-left: 15px;
+      font-size: 14px;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 850px;
+      margin: 35px auto;
+    }
+
+    .tool-box {
+      background: white;
+      padding: 28px;
+      border-radius: 14px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+    }
+
+    h1 {
+      text-align: center;
+      color: #102b50;
+      margin-bottom: 10px;
+      font-size: 30px;
+    }
+
+    .intro {
+      text-align: center;
+      color: #64748b;
+      margin-bottom: 25px;
+    }
+
+    .upload-area {
+      border: 2px dashed #2563eb;
+      border-radius: 12px;
+      padding: 35px 15px;
+      text-align: center;
+      background: #f8fbff;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .upload-area:hover {
+      background: #eff6ff;
+    }
+
+    .upload-icon {
+      font-size: 42px;
+      margin-bottom: 8px;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .file-info {
+      background: #eff6ff;
+      padding: 13px;
+      border-radius: 8px;
+      margin-bottom: 18px;
+      display: none;
+      overflow-wrap: anywhere;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 15px;
+      margin-bottom: 18px;
+      background: white;
+    }
+
+    button, .download-btn {
+      display: block;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .compress-btn {
+      background: #2563eb;
+      color: white;
+    }
+
+    .compress-btn:hover {
+      background: #1d4ed8;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .download-btn {
+      background: #16a34a;
+      color: white;
+      margin-top: 15px;
+      display: none;
+    }
+
+    .download-btn:hover {
+      background: #15803d;
+    }
+
+    .status {
+      text-align: center;
+      margin: 18px 0;
+      font-weight: bold;
+      overflow-wrap: anywhere;
+    }
+
+    .progress-wrap {
+      display: none;
+      width: 100%;
+      height: 10px;
+      background: #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background: #2563eb;
+      transition: width 0.2s;
+    }
+
+    .result {
+      display: none;
+      background: #f0fdf4;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .result p {
+      margin: 7px 0;
+    }
+
+    .warning {
+      background: #fff7ed;
+      border-left: 4px solid #f97316;
+      padding: 14px;
+      margin-top: 20px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .content {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      margin-top: 25px;
+    }
+
+    .content h2 {
+      color: #102b50;
+      margin-bottom: 10px;
+    }
+
+    .content p {
+      margin-bottom: 12px;
+      color: #475569;
+    }
+
+    footer {
+      background: #102b50;
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: white;
+      margin: 0 8px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    @media(max-width:600px) {
+      header {
+        justify-content: center;
+        text-align: center;
+      }
+
+      nav a {
+        margin: 0 7px;
+      }
+
+      .container {
+        margin: 20px auto;
+      }
+
+      .tool-box {
+        padding: 20px 15px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a class="logo" href="index.html">FileSwift Tools</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#tools">All Tools</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <section class="tool-box">
+    <h1>Compress PDF Online</h1>
+    <p class="intro">Create a smaller PDF directly in your browser.</p>
+
+    <label class="upload-area" for="pdfFile">
+      <div class="upload-icon">📄</div>
+      <strong>Click here to select a PDF</strong>
+      <p>Choose one PDF file from your device</p>
+      <small>PDF files only</small>
+    </label>
+
+    <input type="file" id="pdfFile" accept="application/pdf,.pdf">
+
+    <div class="file-info" id="fileInfo"></div>
+
+    <label for="level">Choose Compression Level</label>
+    <select id="level">
+      <option value="high">High Quality - Better clarity</option>
+      <option value="balanced" selected>Balanced - Recommended</option>
+      <option value="small">Small Size - More compression</option>
+    </select>
+
+    <button class="compress-btn" id="compressBtn" disabled>
+      Compress PDF
+    </button>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="status" id="status"></div>
+
+    <div class="result" id="result">
+      <h3>Compression Result</h3>
+      <p id="beforeSize"></p>
+      <p id="afterSize"></p>
+      <p id="savedSize"></p>
+      <p id="savedPercent"></p>
+    </div>
+
+    <a id="downloadBtn" class="download-btn" download="fileswift-compressed.pdf">
+      Download Compressed PDF
+    </a>
+
+    <div class="warning">
+      <strong>Important:</strong> This tool converts PDF pages into images.
+      The output may not retain selectable text, hyperlinks, forms or other
+      interactive PDF features. Compression results vary by document.
+      Keep your original PDF.
+    </div>
+  </section>
+
+  <section class="content">
+    <h2>How to Compress PDF Online?</h2>
+    <p>1. Select a PDF file from your device.</p>
+    <p>2. Choose High Quality, Balanced or Small Size.</p>
+    <p>3. Click the Compress PDF button.</p>
+    <p>4. Wait for the conversion to finish.</p>
+    <p>5. Check the new file size and download your PDF.</p>
+
+    <h2>Is this PDF Compressor Free?</h2>
+    <p>Yes. FileSwift Tools provides this browser-based PDF compression
+    tool without requiring an account or payment.</p>
+
+    <h2>Are My PDF Files Uploaded?</h2>
+    <p>Your selected PDF is processed locally in your browser.
+    It is not uploaded to a FileSwift server. Required processing
+    libraries are loaded from third-party CDNs.</p>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 FileSwift Tools. All Rights Reserved.</p>
+  <br>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="privacy.html">Privacy Policy</a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+
+<script type="module">
+  import * as pdfjsLib from
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs";
+
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs";
+
+  const pdfFile = document.getElementById("pdfFile");
+  const fileInfo = document.getElementById("fileInfo");
+  const compressBtn = document.getElementById("compressBtn");
+  const statusBox = document.getElementById("status");
+  const progressWrap = document.getElementById("progressWrap");
+  const progressBar = document.getElementById("progressBar");
+  const resultBox = document.getElementById("result");
+  const downloadBtn = document.getElementById("downloadBtn");
+
+  let selectedFile = null;
+  let outputUrl = null;
+  let pdfLoadingTask = null;
+
+  function formatBytes(bytes) {
+    if (bytes < 1024) return bytes + " Bytes";
+    if (bytes < 1024 * 1024)
+      return (bytes / 1024).toFixed(2) + " KB";
+    return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+  }
+
+  function setProgress(value) {
+    progressBar.style.width = value + "%";
+  }
+
+  function canvasToBlob(canvas, quality) {
+    return new Promise((resolve, reject) => {
+      canvas.toBlob(blob => {
+        if (blob) resolve(blob);
+        else reject(new Error("Could not create image from PDF page."));
+      }, "image/jpeg", quality);
+    });
+  }
+
+  pdfFile.addEventListener("change", () => {
+    selectedFile = pdfFile.files[0] || null;
+
+    if (outputUrl) {
+      URL.revokeObjectURL(outputUrl);
+      outputUrl = null;
+    }
+
+    downloadBtn.style.display = "none";
+    resultBox.style.display = "none";
+    statusBox.textContent = "";
+
+    if (!selectedFile) {
+      fileInfo.style.display = "none";
+      compressBtn.disabled = true;
+      return;
+    }
+
+    if (selectedFile.type !== "application/pdf" &&
+        !selectedFile.name.toLowerCase().endsWith(".pdf")) {
+      statusBox.textContent = "Please select a valid PDF file.";
+      fileInfo.style.display = "none";
+      compressBtn.disabled = true;
+      selectedFile = null;
+      return;
+    }
+
+    fileInfo.style.display = "block";
+    fileInfo.textContent =
+      "Selected: " + selectedFile.name +
+      " | Size: " + formatBytes(selectedFile.size);
+
+    compressBtn.disabled = false;
+  });
+
+  compressBtn.addEventListener("click", async () => {
+    if (!selectedFile) {
+      statusBox.textContent = "Please select a PDF first.";
+      return;
+    }
+
+    compressBtn.disabled = true;
+    downloadBtn.style.display = "none";
+    resultBox.style.display = "none";
+    progressWrap.style.display = "block";
+    setProgress(0);
+
+    statusBox.textContent = "Reading your PDF...";
+
+    let pdfDocument = null;
+    let canvas = null;
+    let canvasContext = null;
+
+    try {
+      const settings = {
+        high: { scale: 1.6, quality: 0.86 },
+        balanced: { scale: 1.2, quality: 0.72 },
+        small: { scale: 0.85, quality: 0.55 }
+      };
+
+      const chosen = settings[document.getElementById("level").value];
+
+      const fileBytes = await selectedFile.arrayBuffer();
+
+      pdfLoadingTask = pdfjsLib.getDocument({
+        data: new Uint8Array(fileBytes)
+      });
+
+      pdfDocument = await pdfLoadingTask.promise;
+
+      const outputPdf = await PDFLib.PDFDocument.create();
+
+      const totalPages = pdfDocument.numPages;
+
+      for (let pageNumber = 1; pageNumber <= totalPages; pageNumber++) {
+        statusBox.textContent =
+          "Processing page " + pageNumber + " of " + totalPages + "...";
+
+        const page = await pdfDocument.getPage(pageNumber);
+
+        const baseViewport = page.getViewport({ scale: 1 });
+
+        // Limit canvas dimensions to reduce memory usage on mobile devices.
+        const maxDimension = 2500;
+        const scale = Math.min(
+          chosen.scale,
+          maxDimension / Math.max(baseViewport.width, baseViewport.height)
+        );
+
+        const viewport = page.getViewport({ scale: scale });
+
+        canvas = document.createElement("canvas");
+        canvas.width = Math.max(1, Math.ceil(viewport.width));
+        canvas.height = Math.max(1, Math.ceil(viewport.height));
+
+        canvasContext = canvas.getContext("2d", {
+          alpha: false
+        });
+
+        if (!canvasContext) {
+          throw new Error("Canvas is not supported by this browser.");
+        }
+
+        canvasContext.fillStyle = "#ffffff";
+        canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+
+        await page.render({
+          canvasContext: canvasContext,
+          viewport: viewport,
+          background: "#ffffff"
+        }).promise;
+
+        const imageBlob = await canvasToBlob(
+          canvas,
+          chosen.quality
+        );
+
+        const imageBytes = await imageBlob.arrayBuffer();
+        const embeddedImage = await outputPdf.embedJpg(imageBytes);
+
+        const outputPage = outputPdf.addPage([
+          baseViewport.width,
+          baseViewport.height
+        ]);
+
+        outputPage.drawImage(embeddedImage, {
+          x: 0,
+          y: 0,
+          width: baseViewport.width,
+          height: baseViewport.height
+        });
+
+        canvas.width = 0;
+        canvas.height = 0;
+        canvas = null;
+        canvasContext = null;
+
+        page.cleanup();
+
+        setProgress(Math.round((pageNumber / totalPages) * 90));
+      }
+
+      statusBox.textContent = "Creating compressed PDF...";
+
+      const outputBytes = await outputPdf.save({
+        useObjectStreams: true
+      });
+
+      const outputBlob = new Blob([outputBytes], {
+        type: "application/pdf"
+      });
+
+      if (outputUrl) URL.revokeObjectURL(outputUrl);
+
+      outputUrl = URL.createObjectURL(outputBlob);
+
+      const before = selectedFile.size;
+      const after = outputBlob.size;
+      const difference = before - after;
+      const percentage = (difference / before) * 100;
+
+      document.getElementById("beforeSize").textContent =
+        "Original Size: " + formatBytes(before);
+
+      document.getElementById("afterSize").textContent =
+        "New PDF Size: " + formatBytes(after);
+
+      if (difference > 0) {
+        document.getElementById("savedSize").textContent =
+          "Size Reduced: " + formatBytes(difference);
+
+        document.getElementById("savedPercent").textContent =
+          "Compression: " + percentage.toFixed(2) + "% smaller";
+      } else if (difference < 0) {
+        document.getElementById("savedSize").textContent =
+          "Size Increased: " + formatBytes(Math.abs(difference));
+
+        document.getElementById("savedPercent").textContent =
+          "The output is " + Math.abs(percentage).toFixed(2) +
+          "% larger than the original.";
+      } else {
+        document.getElementById("savedSize").textContent =
+          "No size change";
+
+        document.getElementById("savedPercent").textContent =
+          "The file size remained the same.";
+      }
+
+      downloadBtn.href = outputUrl;
+      downloadBtn.style.display = "block";
+
+      setProgress(100);
+      resultBox.style.display = "block";
+      statusBox.textContent = "PDF processing completed successfully!";
+
+    } catch (error) {
+      console.error(error);
+      statusBox.textContent =
+        "Error: " + (error.message || "Could not process this PDF.") +
+        " Please try a smaller PDF or another browser.";
+
+    } finally {
+      if (canvas) {
+        canvas.width = 0;
+        canvas.height = 0;
+      }
+
+      if (pdfDocument) {
+        await pdfDocument.destroy().catch(() => {});
+      }
+
+      pdfLoadingTask = null;
+      compressBtn.disabled = false;
+    }
+  });
+</script>
+
+</body>
+</html>
